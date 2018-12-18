@@ -1,2 +1,18 @@
 # AutoGit
-Check the change of your local repository and update to remote repository automatically
+监控你的本地仓库的变化，并将其更新到远程仓库。
+
+## 项目由来
+
+我在用 Markdown 编辑器写文章时，如果在文章中插入电脑本地图片，那么把文章上传到 GitHub 后，图片就无法显示了。所以我必须先把图片上传到 GitHub，然后再把图片的链接地址复制到文章中，当文章中的图片数量过多时，这无疑大大增加了我的劳动量。所以就写了这么一个小脚本，实时地监控本地仓库的变化，一旦发现仓库中有新增的图片，就利用 GitPython 这个第三方库，将图片自动同步到 GitHub 远程仓库。这样，再插入图片时，只要把图片放到本地仓库中，然后去浏览器中复制图片链接地址就可以了。
+
+## 依赖的第三方库
+
+[GitPython](https://gitpython.readthedocs.io/en/stable/index.html)
+
+## 运行环境
+
+Python 3.6 及以上版本
+
+## 使用方法
+
+将 GitHub 中存放你的图片的仓库克隆到本地，然后将配置文件 config.ini 中的 path 的值改为你的本地仓库的路径。然后视情况修改 config.ini 中的 remote 和 fetch 的值，其中 remote 是远程仓库别名，默认是 origin，fetch 是分支，默认是master。然后执行 AutoGit.py 就可以了。因为要不断地监控你的仓库的变化情况，所以这个程序写成了死循环，不用的时候需要手动关闭。
